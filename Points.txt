@@ -1,0 +1,42 @@
+Here is the plan:
+
+    Cryptocurrency data overview
+    Time Series
+    Data preprocessing
+    Build and train LSTM model in TensorFlow 2
+    Use the model to predict future Bitcoin price
+
+
+1. Data load using pandas
+
+2. Sort data by date
+
+3. Head print
+   Date- Current date
+   open - Open time
+   High - Highest price in day
+   Low  - Lowest price in day
+   Close -Closing price
+   Adj. Close- Closing price adjusted value
+   Volumne- Change in  amoount
+
+We have a total of 3201 data points representing Bitcoin-USD price for 3201 days (~9 years). We’re interested in predicting the closing price for future dates.
+
+
+5. df.head(n=5)
+Return the first n rows.
+
+This function returns the first n rows for the object based on position. It is useful for quickly testing if your object has the right type of data in it.
+
+For negative values of n, this function returns all rows except the last n rows, equivalent to df[:-n].
+
+Parameters
+nint, default 5
+Number of rows to select.
+
+6.Our dataset is somewhat different from our previous examples. The data is sorted by time and recorded at equal intervals (1 day). Such a sequence of data is called Time Series.
+
+
+7.Modeling
+All models we’ve built so far do not allow for operating on sequence data. Fortunately, we can use a special class of Neural Network models known as Recurrent Neural Networks (RNNs) just for this purpose. RNNs allow using the output from the model as a new input for the same model. The process can be repeated indefinitely.
+One serious limitation of RNNs is the inability of capturing long-term dependencies in a sequence (e.g. Is there a dependency between today`s price and that 2 weeks ago?). One way to handle the situation is by using an Long short-term memory (LSTM) variant of RNN.The default LSTM behavior is remembering information for prolonged periods of time.
